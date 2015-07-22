@@ -14,7 +14,7 @@ class apache_stat(graphitestat.graphitestat):
 
 		for line in f.readlines():
 			# {'Uptime': ' 2818294',
-			# 'IdleWorkers': ' 16', 
+			# 'IdleWorkers': ' 16',
 			# 'Total Accesses': ' 29089506',
 			# 'Scoreboard': ' KKWK_K....',
 			# 'Total kBytes': ' 124774419',

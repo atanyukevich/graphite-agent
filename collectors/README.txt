@@ -26,7 +26,7 @@ no i przykladowy modul:
 
 
 
-$ cat load.py 
+$ cat load.py
 #!/usr/bin/env python
 
 import graphitestat

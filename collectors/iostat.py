@@ -47,42 +47,42 @@ class iostat(graphitestat.graphitestat):
 
 	def diskstats_table_to_dict(self,table):
 		''' Assignes name to table fields '''
-	
+
 		result = {}
-	
+
 		device = table[2]
-		
+
 		result['iostat.' + device + '.reads'] = int(table[3])
 		result['iostat.' + device + '.reads_merged'] = int(table[4])
 		result['iostat.' + device + '.sectors_read'] = int(table[5])
 		result['iostat.' + device + '.time_read'] = int(table[6])
-	
+
 		result['iostat.' + device + '.writes'] = int(table[7])
 		result['iostat.' + device + '.writes_merged'] = int(table[8])
 		result['iostat.' + device + '.sectors_written'] = int(table[9])
 		result['iostat.' + device + '.time_write'] = int(table[10])
-		
+
 		result['iostat.' + device + '.current_io_count'] = int(table[11])
-	
+
 		return (device,result)
 
 	def get_whole_diskstats(self):
 		_tmp_file = open('/proc/diskstats')
-	
+
 		result = []
-	
+
 		for i in _tmp_file:
 			result.append( self.diskstats_table_to_dict( i.split() ) )
-	
+
 		_tmp_file.close()
 		return result
 
 	def diff_diskstats(self,first,second):
 		result = {}
-		
+
 		for i in first[1].keys():
 			result[i]= second[1][i] - first[1][i]
-	
+
 		return result
 
 
@@ -91,7 +91,7 @@ class iostat(graphitestat.graphitestat):
 		for i in first:
 			for tmp_key in self.diff_diskstats(i,second[first.index(i)]).keys():
 				result[tmp_key] = self.diff_diskstats(i,second[first.index(i)])[tmp_key]
-		
+
 		return result
 
 
