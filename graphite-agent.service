@@ -1,0 +1,18 @@
+[Unit]
+Description=Graphite Agent
+After=network.target
+
+[Service]
+User=graphite
+Group=graphite
+ExecStart=/usr/local/bin/graphiteagent
+KillMode=process
+Restart=on-failure
+RestartSec=5s
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
