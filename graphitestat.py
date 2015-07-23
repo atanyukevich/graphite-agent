@@ -58,6 +58,8 @@ class graphitestat():
 						time.sleep(self.interval)
 						self.result = timelimit(self.function)
 						#TODO: sending results to graphite
+						if not self.result:
+							continue
 						if isinstance(self.result,dict):
 							for i in self.result.keys():
 								self.metric_queue.put( "%s.%s %s %d" \
