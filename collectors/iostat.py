@@ -81,7 +81,11 @@ class iostat(graphitestat.graphitestat):
 		result = {}
 
 		for i in first[1].keys():
-			result[i]= second[1][i] - first[1][i]
+			if '.current_io_count' in i:
+				result[i] = max(second[1][i],first[1][i])
+			else:
+				result[i] = second[1][i] - first[1][i]
+
 
 		return result
 
