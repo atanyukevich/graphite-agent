@@ -64,5 +64,3 @@ class cpu_stat(graphitestat.graphitestat):
 		time.sleep(1)
 		second_stat = self._get_stat_line()
 		return self._get_stat_diff(first_stat,second_stat)
-
-

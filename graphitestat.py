@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import time
 import threading
 import socket
@@ -80,5 +81,3 @@ class graphitestat():
 		if not self.get_stat:
 			raise AttributeError("get_stat(function is not defined)")
 #-----------------------------------------------------------------------------#
-
-

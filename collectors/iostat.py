@@ -106,11 +106,3 @@ class iostat(graphitestat.graphitestat):
 
 		return self.diff_whole_diskstats(first_snap,second_snap)
 #-----------------------------------------------------------------------------#
-
-
-
-
-
-
-
-
