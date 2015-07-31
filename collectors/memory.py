@@ -11,7 +11,7 @@ class memory(graphitestat.graphitestat):
 		_mem_file= open('/proc/meminfo')
 
 		for line in _mem_file.readlines():
-			result['memory.' + line.split(':')[0]] = line.split(':')[1].replace(' ','').replace('kB\n','').replace('\n','')
+			result['memory.' + line.split(':')[0].replace('(anon)', 'Anon').replace('(file)', 'File')] = line.split(':')[1].replace(' ','').replace('kB\n','').replace('\n','')
 
 		_mem_file.close()
 		return result
