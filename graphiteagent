@@ -65,7 +65,11 @@ class metrics_sender(threading.Thread):
 				print "reconnecting"
 				self.connect()
 				continue
-
+			except AttributeError as e:
+				print "problem while sending metrics:", e
+				print "reconnecting"
+				self.connect()
+				continue
 	def run(self):
 		while True:
 			if self.queue.empty():
