@@ -81,7 +81,7 @@ class metrics_sender(threading.Thread):
 
 	def connect(self):
 		try:
-			if not self.socket:
+			if not self.socket or self.socket in [0,1]:
 				self.socket = telnetlib.Telnet(GRAPHITELB, PORT)
 			else:
 				self.socket.close()
