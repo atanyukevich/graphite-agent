@@ -13,9 +13,9 @@ before start:
 while True:
 	sleep(interval)
 ```
-- when sleep ends, it starts another thread with get_stat() function, and kill it after 5s if function didn't finish before
-- and there is one more thread which sens metrics into graphite which is setet up in graphiteagent with global variables (TODO: move into config)
-- after 5 fails sys.exit rises, and unit restarts whole daemon.
+- when sleep ends, it starts another thread with get_stat() function, and kill it after 5s if function doesn't finish before
+- and there is one more thread sends metrics into graphite which is configured in graphiteagent with global variables (TODO: move into config)
+- after 5 fails sys.exit raises, and unit restarts whole daemon.
 - results of get_stat() are pushed into queue to send, with timestamp and hostname appended (TODO: add PREFIX, and SUFFIX settings)
 - if get_stat returns dictionary, it appends, timestamp and hostname to each.
 - so example module:
